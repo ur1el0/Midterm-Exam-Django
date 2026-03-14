@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professor Details</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <div class="portal-header">TechCourse Directory</div>
+    <div class="portal-layout">
+      <nav class="sidebar">
+        <a href="/" class="active">Professors</a>
+      </nav>
+      <main class="container">
+        <a href="/" class="back-btn">← Back to Professors</a>
+
+        <div class="profile-header">
+          <div class="avatar">{{ professor.name.0 }}</div>
+          <div class="info">
+            <div class="name">{{ professor.name }}</div>
+            <span class="dept">{{ professor.department }}</span>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-header">
+            <span>Courses</span>
+            <span class="credits">{{ courses|length }} course(s)</span>
+          </div>
+          <table class="section-table">
+            <thead>
+              <tr>
+                <th>Course Name</th>
+                <th style="text-align: right">Credits</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for course in courses %}
+              <tr>
+                <td>{{ course.courseName }}</td>
+                <td class="amount">{{ course.credits }}</td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="2">No courses assigned.</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-card">
+          <div class="section-header">
+            <span>Assignments</span>
+            <span class="credits">{{ assignments|length }} assignment(s)</span>
+          </div>
+          <table class="section-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th style="text-align: right">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for assign in assignments %}
+              <tr>
+                <td>{{ assign.title }}</td>
+                <td class="amount">{{ assign.totalAmount }}</td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="2">No assignments found.</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="total-box">Total Amount: {{ total }}</div>
+      </main>
+    </div>
+  </body>
+</html>
