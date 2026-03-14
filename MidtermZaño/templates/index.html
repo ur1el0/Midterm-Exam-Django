@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professors List</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <div class="portal-header">TechCourse Directory</div>
+    <div class="portal-layout">
+      <nav class="sidebar">
+        <a href="/" class="active">Professors</a>
+      </nav>
+      <main class="container">
+        <h2>Professors</h2>
+        <div class="professors-list">
+          {% for prof in professors %}
+          <a href="{% url 'details' prof.profesorID %}" class="professor-card"
+            >{{ prof.name }}</a
+          >
+          {% empty %}
+          <div>No professors found.</div>
+          {% endfor %}
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
